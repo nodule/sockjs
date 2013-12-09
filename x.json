@@ -1,0 +1,258 @@
+{
+  "name": "sockjs",
+  "description": "Sockjs for Chiχ",
+  "version": "0.0.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/sockjs.git"
+  },
+  "dependencies": {
+    "sockjs": "0.x.x"
+  },
+  "nodes": [
+    {
+      "ports": {
+        "input": {
+          "conn": {
+            "type": "function",
+            "title": "SockJS Connection",
+            "required": true
+          },
+          "code": {
+            "type": "numeric",
+            "title": "Status Code",
+            "required": true
+          },
+          "message": {
+            "type": "any",
+            "title": "Close message",
+            "required": true
+          }
+        },
+        "output": {}
+      },
+      "phrases": {
+        "active": "Closing Connection"
+      },
+      "description": "Close Connection",
+      "ns": "sockjs",
+      "name": "close",
+      "env": "server",
+      "fn": "input.conn.close(input.code, input.message);\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "conn": {
+            "type": "function",
+            "title": "SockJS Connection",
+            "required": true,
+            "description": "SockJS Connection"
+          },
+          "callback": {
+            "type": "function",
+            "title": "Callback Function",
+            "required": true
+          }
+        },
+        "output": {}
+      },
+      "phrases": {
+        "active": "Received Connection Close event"
+      },
+      "description": "Close Connection Event",
+      "ns": "sockjs",
+      "name": "closeEvent",
+      "env": "server",
+      "fn": "output = [input.server, 'on', 'connection'];\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "server": {
+            "type": "function",
+            "title": "SockJS server",
+            "required": true,
+            "description": "SockJS Server"
+          }
+        },
+        "output": {
+          "conn": {
+            "type": "function",
+            "title": "SockJS Connection",
+            "description": "SockJS Connection"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Connection event"
+      },
+      "description": "Connection Event",
+      "ns": "sockjs",
+      "name": "connection",
+      "env": "server",
+      "fn": "output = [input.server, 'on', 'connection'];\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "sockjsurl": {
+            "type": "string",
+            "title": "SockJS Url",
+            "required": true,
+            "description": "Transports which don't support cross-domain communication natively ('eventsource' to name one) use an iframe trick. A simple page is served from the SockJS server (using its foreign domain) and is placed in an invisible iframe. Code run from this iframe doesn't need to worry about cross-domain issues, as it's being run from domain local to the SockJS server. This iframe also does need to load SockJS javascript client library, and this option lets you specify its url (if you're unsure, point it to the latest minified SockJS client release, this is the default). You must explicitly specify this url on the server side for security reasons - we don't want the possibility of running any foreign javascript within the SockJS domain (aka cross site scripting attack). Also, sockjs javascript library is probably already cached by the browser - it makes sense to reuse the sockjs url you're using in normally."
+          },
+          "prefix": {
+            "type": "string",
+            "title": "Prefix",
+            "description": "A url prefix for the server. All http requests which paths begins with selected prefix will be handled by SockJS. All other requests will be passed through, to previously registered handlers."
+          },
+          "response_limit": {
+            "type": "integer",
+            "title": "Response Limit",
+            "description": "Most streaming transports save responses on the client side and don't free memory used by delivered messages. Such transports need to be garbage-collected once in a while. `response_limit` sets a minimum number of bytes that can be send over a single http streaming request before it will be closed. After that client needs to open new request. Setting this value to one effectively disables streaming and will make streaming transports to behave like polling transports. The default value is 128K."
+          },
+          "websocket": {
+            "type": "boolean",
+            "title": "Websocket?",
+            "description": "Some load balancers don't support websockets. This option can be used to disable websockets support by the server. By default websockets are enabled."
+          },
+          "jsessionid": {
+            "type": [
+              "boolean",
+              "function"
+            ],
+            "title": "JSESSIONID",
+            "description": "Some hosting providers enable sticky sessions only to requests that have JSESSIONID cookie set. This setting controls if the server should set this cookie to a dummy value. By default setting JSESSIONID cookie is disabled. More sophisticated behaviour can be achieved by supplying a function."
+          },
+          "log": {
+            "type": "function",
+            "title": "Lost",
+            "description": "It's quite useful, especially for debugging, to see some messages printed by a SockJS-node library. This is done using this `log` function, which is by default set to `console.log`. If this behaviour annoys you for some reason, override `log` setting with a custom handler. The following `severities` are used: `debug` (miscellaneous logs), `info` (requests logs), `error` (serious errors, consider filing an issue)."
+          },
+          "hearbeat_delay": {
+            "type": "timestamp",
+            "title": "Heartbeat Delay",
+            "description": "In order to keep proxies and load balancers from closing long running http requests we need to pretend that the connection is active and send a heartbeat packet once in a while. This setting controls how often this is done. By default a heartbeat packet is sent every 25 seconds."
+          },
+          "disconnect_delay": {
+            "type": "timestamp",
+            "title": "Disconnect Delay",
+            "description": "The server sends a `close` event when a client receiving connection have not been seen for a while. This delay is configured by this setting. By default the `close` event will be emitted when a receiving connection wasn't seen for 5 seconds."
+          }
+        },
+        "output": {
+          "server": {
+            "type": "function",
+            "title": "Server"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Creating SockJS server"
+      },
+      "require": {
+        "sockjs": "0.x.x"
+      },
+      "description": "SockJS server",
+      "ns": "sockjs",
+      "name": "createServer",
+      "env": "server",
+      "fn": "var server = sockjs.createServer(input.options);\noutput = { server: server };\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "conn": {
+            "type": "function",
+            "title": "SockJS Connection",
+            "required": true,
+            "description": "SockJS Connection"
+          }
+        },
+        "output": {
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "description": "Message"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Receiving connection data"
+      },
+      "description": "Connection Data Event",
+      "ns": "sockjs",
+      "name": "data",
+      "env": "server",
+      "fn": "output = [input.conn, 'on', 'data'];\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "server": {
+            "type": "function",
+            "title": "SockJS server",
+            "required": true,
+            "description": "SockJS Server"
+          },
+          "http": {
+            "type": "function",
+            "title": "HTTP server",
+            "required": true,
+            "description": "Node.js HTTP Server"
+          },
+          "prefix": {
+            "type": "string",
+            "title": "Prefix",
+            "description": "A url prefix for the server. All http requests which paths begins with selected prefix will be handled by SockJS. All other requests will be passed through, to previously registered handlers."
+          }
+        },
+        "output": {
+          "server": {
+            "type": "function",
+            "title": "SockJS server",
+            "description": "SockJS Server"
+          }
+        }
+      },
+      "phrases": {
+        "active": "Installing Handlers"
+      },
+      "description": "SockJS Install Handlers",
+      "ns": "sockjs",
+      "name": "InstallHandlers",
+      "env": "server",
+      "fn": "input.server.installHandlers(input.http, {\n  prefix: input.prefix\n});\noutput = { server: input.server };\n"
+    },
+    {
+      "ports": {
+        "input": {
+          "message": {
+            "type": "any",
+            "title": "Message",
+            "required": true
+          },
+          "conn": {
+            "type": "function",
+            "title": "SockJS Connection",
+            "required": true,
+            "description": "SockJS Connection"
+          }
+        },
+        "output": {}
+      },
+      "phrases": {
+        "active": "Writing message"
+      },
+      "description": "Connection Write",
+      "title": "SockJS Write",
+      "ns": "sockjs",
+      "name": "write",
+      "env": "server",
+      "fn": "input.conn.write(input.message);\n"
+    }
+  ],
+  "twigs": [],
+  "env": "server"
+}

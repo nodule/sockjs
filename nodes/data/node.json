@@ -1,0 +1,25 @@
+{
+  "name": "data",
+  "ns": "sockjs",
+  "description": "Connection Data Event",
+  "phrases": {
+    "active": "Receiving connection data"
+  },
+  "ports": {
+    "input": {
+      "conn": {
+        "type": "function",
+        "title": "SockJS Connection",
+        "required": true,
+        "description": "SockJS Connection"
+      }
+    },
+    "output": {
+      "message": {
+        "type": "string",
+        "title": "Message",
+        "description": "Message"
+      }
+    }
+  }
+}

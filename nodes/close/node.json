@@ -1,0 +1,29 @@
+{
+  "name": "close",
+  "ns": "sockjs",
+  "description": "Close Connection",
+  "phrases": {
+    "active": "Closing Connection"
+  },
+  "ports": {
+    "input": {
+      "conn": {
+        "type": "function",
+        "title": "SockJS Connection",
+        "required": true
+      },
+      "code": {
+        "type": "numeric",
+        "title": "Status Code",
+        "required": true
+      },
+      "message": {
+        "type": "any",
+        "title": "Close message",
+        "required": true
+      }
+    },
+    "output": {
+    }
+  }
+}

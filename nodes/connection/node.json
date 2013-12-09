@@ -1,0 +1,25 @@
+{
+  "name": "connection",
+  "ns": "sockjs",
+  "description": "Connection Event",
+  "phrases": {
+    "active": "Connection event"
+  },
+  "ports": {
+    "input": {
+      "server": {
+        "type": "function",
+        "title": "SockJS server",
+        "required": true,
+        "description": "SockJS Server"
+      }
+    },
+    "output": {
+      "conn": {
+        "type": "function",
+        "title": "SockJS Connection",
+        "description": "SockJS Connection"
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "name": "closeEvent",
+  "ns": "sockjs",
+  "description": "Close Connection Event",
+  "phrases": {
+    "active": "Received Connection Close event"
+  },
+  "ports": {
+    "input": {
+      "conn": {
+        "type": "function",
+        "title": "SockJS Connection",
+        "required": true,
+        "description": "SockJS Connection"
+      },
+      "callback": {
+        "type": "function",
+        "title": "Callback Function",
+        "required": true
+      }
+    },
+    "output": {
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "nodule-sockjs",
+  "description": "Sockjs for Chiχ",
+  "author": "Rob Halff <rob.halff@gmail.com>",
+  "version": "0.0.3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nodule/sockjs.git"
+  },
+  "engines": {
+    "node": ">=0.6.0"
+  },
+  "dependencies": {
+    "sockjs": "0.x.x"
+  },
+  "devDependencies": {
+    "chit": "0.x.x"
+  },
+  "main": "x",
+  "scripts": {
+    "test": "chit"
+  },
+  "chix": {
+    "name": "sockjs",
+    "env": "server",
+    "color": "rgb(35,136,35)"
+  }
+}
