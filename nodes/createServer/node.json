@@ -32,12 +32,6 @@
         "title": "Websocket?",
         "description": "Some load balancers don't support websockets. This option can be used to disable websockets support by the server. By default websockets are enabled."
       },
-      "jsessionid": {
-        "type": ["boolean", "function"],
-        "title": "JSESSIONID",
-        "description": "Some hosting providers enable sticky sessions only to requests that have JSESSIONID cookie set. This setting controls if the server should set this cookie to a dummy value. By default setting JSESSIONID cookie is disabled. More sophisticated behaviour can be achieved by supplying a function."
-
-      },
       "log": {
         "type": "function",
         "title": "Lost",
