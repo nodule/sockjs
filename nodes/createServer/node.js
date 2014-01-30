@@ -1,2 +1,4 @@
 var server = sockjs.createServer(input.options);
-output = { server: server };
+output = {
+  server: server
+};
