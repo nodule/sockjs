@@ -19,7 +19,7 @@
             "required": true
           },
           "code": {
-            "type": "numeric",
+            "type": "integer",
             "title": "Status Code",
             "required": true
           },
@@ -150,7 +150,7 @@
       "ns": "sockjs",
       "name": "createServer",
       "env": "server",
-      "fn": "var server = sockjs.createServer(input.options);\noutput = { server: server };\n"
+      "fn": "var server = sockjs.createServer(input.options);\noutput = {\n  server: server\n};\n"
     },
     {
       "ports": {
@@ -215,7 +215,7 @@
       "ns": "sockjs",
       "name": "InstallHandlers",
       "env": "server",
-      "fn": "input.server.installHandlers(input.http, {\n  prefix: input.prefix\n});\noutput = { server: input.server };\n"
+      "fn": "input.server.installHandlers(input.http, {\n  prefix: input.prefix\n});\noutput = {\n  server: input.server\n};\n"
     },
     {
       "ports": {
