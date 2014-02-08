@@ -122,7 +122,7 @@
             "title": "Lost",
             "description": "It's quite useful, especially for debugging, to see some messages printed by a SockJS-node library. This is done using this `log` function, which is by default set to `console.log`. If this behaviour annoys you for some reason, override `log` setting with a custom handler. The following `severities` are used: `debug` (miscellaneous logs), `info` (requests logs), `error` (serious errors, consider filing an issue)."
           },
-          "hearbeat_delay": {
+          "heartbeat_delay": {
             "type": "number",
             "title": "Heartbeat Delay",
             "description": "In order to keep proxies and load balancers from closing long running http requests we need to pretend that the connection is active and send a heartbeat packet once in a while. This setting controls how often this is done. By default a heartbeat packet is sent every 25 seconds."
