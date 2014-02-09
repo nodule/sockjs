@@ -13,8 +13,8 @@
       "url": {
         "type": "string",
         "title": "SockJS Url",
-        "required": true,
-        "description": "Transports which don't support cross-domain communication natively ('eventsource' to name one) use an iframe trick. A simple page is served from the SockJS server (using its foreign domain) and is placed in an invisible iframe. Code run from this iframe doesn't need to worry about cross-domain issues, as it's being run from domain local to the SockJS server. This iframe also does need to load SockJS javascript client library, and this option lets you specify its url (if you're unsure, point it to the latest minified SockJS client release, this is the default). You must explicitly specify this url on the server side for security reasons - we don't want the possibility of running any foreign javascript within the SockJS domain (aka cross site scripting attack). Also, sockjs javascript library is probably already cached by the browser - it makes sense to reuse the sockjs url you're using in normally."
+        "description": "Transports which don't support cross-domain communication natively ('eventsource' to name one) use an iframe trick. A simple page is served from the SockJS server (using its foreign domain) and is placed in an invisible iframe. Code run from this iframe doesn't need to worry about cross-domain issues, as it's being run from domain local to the SockJS server. This iframe also does need to load SockJS javascript client library, and this option lets you specify its url (if you're unsure, point it to the latest minified SockJS client release, this is the default). You must explicitly specify this url on the server side for security reasons - we don't want the possibility of running any foreign javascript within the SockJS domain (aka cross site scripting attack). Also, sockjs javascript library is probably already cached by the browser - it makes sense to reuse the sockjs url you're using in normally.",
+        "default": "http://cdn.sockjs.org/sockjs-0.3.min.js"
       },
       "prefix": {
         "type": "string",
