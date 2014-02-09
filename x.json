@@ -149,7 +149,7 @@
       "ns": "sockjs",
       "name": "createServer",
       "env": "server",
-      "fn": "var server = sockjs.createServer(input);\noutput = {\n  server: server\n};\n"
+      "fn": "var options = input;\noptions.sockjsurl = input.url;\n\nvar server = sockjs.createServer(options);\noutput = {\n  server: server\n};\n"
     },
     {
       "ports": {
