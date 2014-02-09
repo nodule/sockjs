@@ -6,6 +6,7 @@ var server = sockjs.createServer({
   heartbeat_delay: input.heartbeat_delay,
   disconnect_delay: input.disconnect_delay
 });
+
 output = {
   server: server
 };
