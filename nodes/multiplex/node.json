@@ -1,0 +1,27 @@
+{
+  "name": "multiplex",
+  "ns": "sockjs",
+  "title": "MultiPlexer",
+  "description": "SockJS Multiplexer",
+  "phrases": {
+    "active": "Multiplexing"
+  },
+  "require": {
+    "websocket-multiplex": "0.x.x"
+  },
+  "ports": {
+    "input": {
+      "service": {
+        "type": "function",
+        "title": "Service",
+        "required": true
+      }
+    },
+    "output": {
+      "multiplex": {
+        "type": "function",
+        "title": "MultiPlexer"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "registerChannel",
+  "ns": "sockjs",
+  "title": "Register Channel",
+  "description": "SockJS Multiplex Channel Register",
+  "phrases": {
+    "active": "Registering channel {{input.channel}}"
+  },
+  "ports": {
+    "input": {
+      "multiplex": {
+        "type": "function",
+        "title": "MultiPlex",
+        "required": true
+      },
+      "channel": {
+        "type": "string",
+        "title": "Channel",
+        "required": true
+      }
+    },
+    "output": {
+      "out": {
+        "type": "function",
+        "title": "Channel"
+      }
+    }
+  }
+}

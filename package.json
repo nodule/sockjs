@@ -12,7 +12,8 @@
     "node": ">=0.6.0"
   },
   "dependencies": {
-    "sockjs": "0.x.x"
+    "sockjs": "0.x.x",
+    "websocket-multiplex": "0.x.x"
   },
   "devDependencies": {
     "chit": "0.x.x"
