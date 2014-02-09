@@ -10,7 +10,7 @@
   },
   "ports": {
     "input": {
-      "sockjsurl": {
+      "url": {
         "type": "string",
         "title": "SockJS Url",
         "required": true,
@@ -24,28 +24,27 @@
       "response_limit": {
         "type": "integer",
         "title": "Response Limit",
-        "description": "Most streaming transports save responses on the client side and don't free memory used by delivered messages. Such transports need to be garbage-collected once in a while. `response_limit` sets a minimum number of bytes that can be send over a single http streaming request before it will be closed. After that client needs to open new request. Setting this value to one effectively disables streaming and will make streaming transports to behave like polling transports. The default value is 128K."
+        "description": "Most streaming transports save responses on the client side and don't free memory used by delivered messages. Such transports need to be garbage-collected once in a while. `response_limit` sets a minimum number of bytes that can be send over a single http streaming request before it will be closed. After that client needs to open new request. Setting this value to one effectively disables streaming and will make streaming transports to behave like polling transports. The default value is 128K.",
+        "default": 131072
 
       },
       "websocket": {
         "type": "boolean",
         "title": "Websocket?",
-        "description": "Some load balancers don't support websockets. This option can be used to disable websockets support by the server. By default websockets are enabled."
-      },
-      "log": {
-        "type": "function",
-        "title": "Lost",
-        "description": "It's quite useful, especially for debugging, to see some messages printed by a SockJS-node library. This is done using this `log` function, which is by default set to `console.log`. If this behaviour annoys you for some reason, override `log` setting with a custom handler. The following `severities` are used: `debug` (miscellaneous logs), `info` (requests logs), `error` (serious errors, consider filing an issue)."
+        "description": "Some load balancers don't support websockets. This option can be used to disable websockets support by the server. By default websockets are enabled.",
+        "default": true
       },
       "heartbeat_delay": {
         "type": "number",
         "title": "Heartbeat Delay",
-        "description": "In order to keep proxies and load balancers from closing long running http requests we need to pretend that the connection is active and send a heartbeat packet once in a while. This setting controls how often this is done. By default a heartbeat packet is sent every 25 seconds."
+        "description": "In order to keep proxies and load balancers from closing long running http requests we need to pretend that the connection is active and send a heartbeat packet once in a while. This setting controls how often this is done. By default a heartbeat packet is sent every 25 seconds.",
+        "default": 25
       },
       "disconnect_delay": {
         "type": "number",
         "title": "Disconnect Delay",
-        "description": "The server sends a `close` event when a client receiving connection have not been seen for a while. This delay is configured by this setting. By default the `close` event will be emitted when a receiving connection wasn't seen for 5 seconds."
+        "description": "The server sends a `close` event when a client receiving connection have not been seen for a while. This delay is configured by this setting. By default the `close` event will be emitted when a receiving connection wasn't seen for 5 seconds.",
+        "default": 5
       }
     },
     "output": {
