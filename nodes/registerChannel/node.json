@@ -9,7 +9,7 @@
   "ports": {
     "input": {
       "multiplex": {
-        "type": "function",
+        "type": "MultiplexServer",
         "title": "MultiPlex",
         "required": true
       },
@@ -21,7 +21,7 @@
     },
     "output": {
       "out": {
-        "type": "function",
+        "type": "Channel",
         "title": "Channel"
       }
     }

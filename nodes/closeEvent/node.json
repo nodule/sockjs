@@ -8,7 +8,7 @@
   "ports": {
     "input": {
       "conn": {
-        "type": "function",
+        "type": "Connection",
         "title": "SockJS Connection",
         "required": true,
         "description": "SockJS Connection"

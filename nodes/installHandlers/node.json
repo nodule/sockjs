@@ -8,7 +8,7 @@
   "ports": {
     "input": {
       "server": {
-        "type": "function",
+        "type": "Server",
         "title": "SockJS server",
         "required": true,
         "description": "SockJS Server"
@@ -27,7 +27,7 @@
     },
     "output": {
       "server": {
-        "type": "function",
+        "type": "Server",
         "title": "SockJS server",
         "description": "SockJS Server"
       }

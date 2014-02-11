@@ -12,14 +12,14 @@
   "ports": {
     "input": {
       "service": {
-        "type": "function",
+        "type": "object",
         "title": "Service",
         "required": true
       }
     },
     "output": {
       "multiplex": {
-        "type": "function",
+        "type": "MultiplexServer",
         "title": "MultiPlexer"
       }
     }

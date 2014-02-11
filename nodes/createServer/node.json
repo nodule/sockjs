@@ -50,7 +50,7 @@
     },
     "output": {
       "server": {
-        "type": "function",
+        "type": "Server",
         "title": "Server"
       }
     }
