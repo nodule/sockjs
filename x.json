@@ -190,7 +190,7 @@
             "description": "SockJS Server"
           },
           "http": {
-            "type": "function",
+            "type": "Server",
             "title": "HTTP server",
             "required": true,
             "description": "Node.js HTTP Server"
