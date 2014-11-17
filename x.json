@@ -95,6 +95,11 @@
       "fn": "output = [input.server, 'on', 'connection'];\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "sockjs": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "url": {
@@ -143,9 +148,6 @@
       },
       "phrases": {
         "active": "Creating SockJS server"
-      },
-      "require": {
-        "sockjs": "0.x.x"
       },
       "description": "SockJS server",
       "ns": "sockjs",
@@ -219,6 +221,11 @@
       "fn": "input.server.installHandlers(input.http, {\n  prefix: input.prefix\n});\noutput = {\n  server: input.server\n};\n"
     },
     {
+      "dependencies": {
+        "npm": {
+          "websocket-multiplex": "0.x.x"
+        }
+      },
       "ports": {
         "input": {
           "service": {
@@ -233,9 +240,6 @@
             "title": "MultiPlexer"
           }
         }
-      },
-      "require": {
-        "websocket-multiplex": "0.x.x"
       },
       "phrases": {
         "active": "Multiplexing"

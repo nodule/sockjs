@@ -20,7 +20,6 @@
         "description": "SockJS Connection"
       }
     },
-    "output": {
-    }
+    "output": {}
   }
 }

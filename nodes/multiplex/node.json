@@ -6,9 +6,6 @@
   "phrases": {
     "active": "Multiplexing"
   },
-  "require": {
-    "websocket-multiplex": "0.x.x"
-  },
   "ports": {
     "input": {
       "service": {
@@ -22,6 +19,11 @@
         "type": "MultiplexServer",
         "title": "MultiPlexer"
       }
+    }
+  },
+  "dependencies": {
+    "npm": {
+      "websocket-multiplex": "0.x.x"
     }
   }
 }
