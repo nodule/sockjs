@@ -1,1 +1,1 @@
-output.out = $.multiplex.registerChannel($.channel);
+output.out = $.create($.multiplex.registerChannel($.channel));

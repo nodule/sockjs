@@ -1,6 +1,4 @@
 $.server.installHandlers($.http, {
   prefix: $.prefix
 });
-output = {
-  server: $.server
-};
+output = {server: $.create($.server)};

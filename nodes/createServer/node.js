@@ -7,6 +7,4 @@ var server = sockjs.createServer({
   disconnect_delay: $.disconnect_delay
 });
 
-output = {
-  server: server
-};
+output = {server: $.create(server)};
