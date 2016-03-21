@@ -1,1 +1,1 @@
-output = [input.conn, 'on', 'data'];
+output = [$.conn, 'on', 'data'];

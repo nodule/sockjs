@@ -1,6 +1,6 @@
-input.server.installHandlers(input.http, {
-  prefix: input.prefix
+$.server.installHandlers($.http, {
+  prefix: $.prefix
 });
 output = {
-  server: input.server
+  server: $.server
 };

@@ -1,1 +1,1 @@
-input.conn.close(input.code, input.message);
+$.conn.close($.code, $.message);

@@ -1,1 +1,1 @@
-output.out = input.multiplex.registerChannel(input.channel);
+output.out = $.multiplex.registerChannel($.channel);

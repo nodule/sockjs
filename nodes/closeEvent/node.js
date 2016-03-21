@@ -1,1 +1,1 @@
-output = [input.server, 'on', 'connection'];
+output = [$.server, 'on', 'connection'];

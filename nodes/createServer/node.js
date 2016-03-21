@@ -1,10 +1,10 @@
 var server = sockjs.createServer({
-  sockjs_url: input.url,
-  prefix: input.prefix,
-  response_limit: input.response_limit,
-  websocket: input.websocket,
-  heartbeat_delay: input.heartbeat_delay,
-  disconnect_delay: input.disconnect_delay
+  sockjs_url: $.url,
+  prefix: $.prefix,
+  response_limit: $.response_limit,
+  websocket: $.websocket,
+  heartbeat_delay: $.heartbeat_delay,
+  disconnect_delay: $.disconnect_delay
 });
 
 output = {

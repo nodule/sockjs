@@ -1,1 +1,1 @@
-input.conn.write(input.message);
+$.conn.write($.message);

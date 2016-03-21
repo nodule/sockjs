@@ -1,1 +1,1 @@
-output.multiplex = new websocket_multiplex.MultiplexServer(input.service)
+output.multiplex = new websocket_multiplex.MultiplexServer($.service)
