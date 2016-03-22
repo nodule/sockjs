@@ -1,1 +1,3 @@
-$.conn.close($.code, $.message);
+output = function() {
+  $.conn.close($.code, $.message);
+}

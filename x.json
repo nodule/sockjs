@@ -39,7 +39,7 @@
       "ns": "sockjs",
       "name": "close",
       "env": "server",
-      "fn": "input.conn.close(input.code, input.message);\n"
+      "fn": "output = function() {\n  $.conn.close($.code, $.message);\n}\n"
     },
     {
       "ports": {
@@ -65,7 +65,7 @@
       "ns": "sockjs",
       "name": "closeEvent",
       "env": "server",
-      "fn": "output = [input.server, 'on', 'connection'];\n"
+      "fn": "output = [$.server, 'on', 'connection'];\n"
     },
     {
       "ports": {
@@ -92,7 +92,7 @@
       "ns": "sockjs",
       "name": "connection",
       "env": "server",
-      "fn": "output = [input.server, 'on', 'connection'];\n"
+      "fn": "output = [$.server, 'on', 'connection'];\n"
     },
     {
       "dependencies": {
@@ -153,7 +153,7 @@
       "ns": "sockjs",
       "name": "createServer",
       "env": "server",
-      "fn": "var server = sockjs.createServer({\n  sockjs_url: input.url,\n  prefix: input.prefix,\n  response_limit: input.response_limit,\n  websocket: input.websocket,\n  heartbeat_delay: input.heartbeat_delay,\n  disconnect_delay: input.disconnect_delay\n});\n\noutput = {\n  server: server\n};\n"
+      "fn": "var server = sockjs.createServer({\n  sockjs_url: $.url,\n  prefix: $.prefix,\n  response_limit: $.response_limit,\n  websocket: $.websocket,\n  heartbeat_delay: $.heartbeat_delay,\n  disconnect_delay: $.disconnect_delay\n});\n\noutput = {server: $.create(server)};\n"
     },
     {
       "ports": {
@@ -180,7 +180,7 @@
       "ns": "sockjs",
       "name": "data",
       "env": "server",
-      "fn": "output = [input.conn, 'on', 'data'];\n"
+      "fn": "output = [$.conn, 'on', 'data'];\n"
     },
     {
       "ports": {
@@ -218,7 +218,7 @@
       "ns": "sockjs",
       "name": "InstallHandlers",
       "env": "server",
-      "fn": "input.server.installHandlers(input.http, {\n  prefix: input.prefix\n});\noutput = {\n  server: input.server\n};\n"
+      "fn": "$.server.installHandlers($.http, {\n  prefix: $.prefix\n});\noutput = {server: $.create($.server)};\n"
     },
     {
       "dependencies": {
@@ -249,7 +249,7 @@
       "ns": "sockjs",
       "name": "multiplex",
       "env": "server",
-      "fn": "output.multiplex = new websocket_multiplex.MultiplexServer(input.service)\n"
+      "fn": "output.multiplex = $.create(new websocket_multiplex.MultiplexServer($.service))\n"
     },
     {
       "ports": {
@@ -280,7 +280,7 @@
       "ns": "sockjs",
       "name": "registerChannel",
       "env": "server",
-      "fn": "output.out = input.multiplex.registerChannel(input.channel);\n"
+      "fn": "output.out = $.create($.multiplex.registerChannel($.channel));\n"
     },
     {
       "ports": {
@@ -307,7 +307,7 @@
       "ns": "sockjs",
       "name": "write",
       "env": "server",
-      "fn": "input.conn.write(input.message);\n"
+      "fn": "output = function() {\n  $.conn.write($.message);\n}\n"
     }
   ],
   "twigs": [],

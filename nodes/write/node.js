@@ -1,1 +1,3 @@
-$.conn.write($.message);
+output = function() {
+  $.conn.write($.message);
+}
