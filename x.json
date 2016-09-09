@@ -12,6 +12,12 @@
   },
   "nodes": [
     {
+      "name": "close",
+      "ns": "sockjs",
+      "description": "Close Connection",
+      "phrases": {
+        "active": "Closing Connection"
+      },
       "ports": {
         "input": {
           "conn": {
@@ -32,16 +38,16 @@
         },
         "output": {}
       },
-      "phrases": {
-        "active": "Closing Connection"
-      },
-      "description": "Close Connection",
-      "ns": "sockjs",
-      "name": "close",
       "env": "server",
       "fn": "output = function() {\n  $.conn.close($.code, $.message);\n}\n"
     },
     {
+      "name": "closeEvent",
+      "ns": "sockjs",
+      "description": "Close Connection Event",
+      "phrases": {
+        "active": "Received Connection Close event"
+      },
       "ports": {
         "input": {
           "conn": {
@@ -58,16 +64,16 @@
         },
         "output": {}
       },
-      "phrases": {
-        "active": "Received Connection Close event"
-      },
-      "description": "Close Connection Event",
-      "ns": "sockjs",
-      "name": "closeEvent",
       "env": "server",
       "fn": "output = [$.server, 'on', 'connection'];\n"
     },
     {
+      "name": "connection",
+      "ns": "sockjs",
+      "description": "Connection Event",
+      "phrases": {
+        "active": "Connection event"
+      },
       "ports": {
         "input": {
           "server": {
@@ -85,20 +91,15 @@
           }
         }
       },
-      "phrases": {
-        "active": "Connection event"
-      },
-      "description": "Connection Event",
-      "ns": "sockjs",
-      "name": "connection",
       "env": "server",
       "fn": "output = [$.server, 'on', 'connection'];\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "sockjs": "0.x.x"
-        }
+      "name": "createServer",
+      "ns": "sockjs",
+      "description": "SockJS server",
+      "phrases": {
+        "active": "Creating SockJS server"
       },
       "ports": {
         "input": {
@@ -146,16 +147,21 @@
           }
         }
       },
-      "phrases": {
-        "active": "Creating SockJS server"
+      "dependencies": {
+        "npm": {
+          "sockjs": "0.x.x"
+        }
       },
-      "description": "SockJS server",
-      "ns": "sockjs",
-      "name": "createServer",
       "env": "server",
       "fn": "var server = sockjs.createServer({\n  sockjs_url: $.url,\n  prefix: $.prefix,\n  response_limit: $.response_limit,\n  websocket: $.websocket,\n  heartbeat_delay: $.heartbeat_delay,\n  disconnect_delay: $.disconnect_delay\n});\n\noutput = {server: $.create(server)};\n"
     },
     {
+      "name": "data",
+      "ns": "sockjs",
+      "description": "Connection Data Event",
+      "phrases": {
+        "active": "Receiving connection data"
+      },
       "ports": {
         "input": {
           "conn": {
@@ -173,16 +179,16 @@
           }
         }
       },
-      "phrases": {
-        "active": "Receiving connection data"
-      },
-      "description": "Connection Data Event",
-      "ns": "sockjs",
-      "name": "data",
       "env": "server",
       "fn": "output = [$.conn, 'on', 'data'];\n"
     },
     {
+      "name": "InstallHandlers",
+      "ns": "sockjs",
+      "description": "SockJS Install Handlers",
+      "phrases": {
+        "active": "Installing Handlers"
+      },
       "ports": {
         "input": {
           "server": {
@@ -211,20 +217,16 @@
           }
         }
       },
-      "phrases": {
-        "active": "Installing Handlers"
-      },
-      "description": "SockJS Install Handlers",
-      "ns": "sockjs",
-      "name": "InstallHandlers",
       "env": "server",
       "fn": "$.server.installHandlers($.http, {\n  prefix: $.prefix\n});\noutput = {server: $.create($.server)};\n"
     },
     {
-      "dependencies": {
-        "npm": {
-          "websocket-multiplex": "0.x.x"
-        }
+      "name": "multiplex",
+      "ns": "sockjs",
+      "title": "MultiPlexer",
+      "description": "SockJS Multiplexer",
+      "phrases": {
+        "active": "Multiplexing"
       },
       "ports": {
         "input": {
@@ -241,17 +243,22 @@
           }
         }
       },
-      "phrases": {
-        "active": "Multiplexing"
+      "dependencies": {
+        "npm": {
+          "websocket-multiplex": "0.x.x"
+        }
       },
-      "description": "SockJS Multiplexer",
-      "title": "MultiPlexer",
-      "ns": "sockjs",
-      "name": "multiplex",
       "env": "server",
       "fn": "output.multiplex = $.create(new websocket_multiplex.MultiplexServer($.service))\n"
     },
     {
+      "name": "registerChannel",
+      "ns": "sockjs",
+      "title": "Register Channel",
+      "description": "SockJS Multiplex Channel Register",
+      "phrases": {
+        "active": "Registering channel {{input.channel}}"
+      },
       "ports": {
         "input": {
           "multiplex": {
@@ -272,17 +279,17 @@
           }
         }
       },
-      "phrases": {
-        "active": "Registering channel {{input.channel}}"
-      },
-      "description": "SockJS Multiplex Channel Register",
-      "title": "Register Channel",
-      "ns": "sockjs",
-      "name": "registerChannel",
       "env": "server",
       "fn": "output.out = $.create($.multiplex.registerChannel($.channel));\n"
     },
     {
+      "name": "write",
+      "ns": "sockjs",
+      "title": "SockJS Write",
+      "description": "Connection Write",
+      "phrases": {
+        "active": "Writing message"
+      },
       "ports": {
         "input": {
           "message": {
@@ -299,17 +306,9 @@
         },
         "output": {}
       },
-      "phrases": {
-        "active": "Writing message"
-      },
-      "description": "Connection Write",
-      "title": "SockJS Write",
-      "ns": "sockjs",
-      "name": "write",
       "env": "server",
       "fn": "output = function() {\n  $.conn.write($.message);\n}\n"
     }
   ],
-  "twigs": [],
   "env": "server"
 }
